@@ -1,5 +1,6 @@
 class PhotographyController < ApplicationController
   def index
-  	@images = Dir.glob("app/assets/images/*.jpg")
+  	@folder = params[:folder]
+  	@images = Dir.glob("app/assets/images/#{@folder}/*.jpg")
   end
 end

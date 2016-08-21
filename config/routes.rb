@@ -1,9 +1,16 @@
 Lizhagearty::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
-  get 'photography/index'
-  
-  root to: 'photography#index'
+  get 'photography/index', folder: "main"
+
+  root to: 'photography#index', folder: "main"
+
+  get 'grad' => 'photography#index', as: :grad, folder: "grad"
+  get 'me' => 'photography#index', as: :me, folder: "self-portraits"
+  get 'travel' =>'photography#index', as: :index, folder: "travel"
+  get 'events' =>'photography#index', as: :index, folder: "events"
+  get 'greek'  =>'photography#index', as: :index, folder: "greek"
+
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action

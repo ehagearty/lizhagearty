@@ -14,9 +14,16 @@
 
 .container-outer { overflow: scroll; height: 85vh; scrollbar-face-color: #b46868;}
 .container-inner { width: 1000000px; }
-
+.button-row { width: 500px;}
+.button_to {
+	width: 100px;
+}
 img {
 	max-height: 85vh;
+}
+input[type="submit" i] {
+	width: 100px;
+	float: left;
 }
 
 #gradient {
