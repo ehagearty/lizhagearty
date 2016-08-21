@@ -1,0 +1,24 @@
+<!-- <h1>Welcome#index</h1>
+<p>Find me in app/views/welcome/index.html.erb</p>
+-->
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Fun</title>
+	<h1>Liz Hagearty</h1>
+</head>
+<body>
+	<div class="container-outer">
+		<div class="container-inner">
+		<% @images.each do |image| %>
+		   <%= image_tag "#{image.split('/').last}" %>
+		 <% end %>
+		</div>
+		<div id="gradient">
+   	    </div>
+	</div>
+	
+</body>
+</html>
