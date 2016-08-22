@@ -30,7 +30,7 @@ input[type="submit" i] {
     background-color: transparent;
 	display: inline-block;
 }
-form {
+h1 form {
 	display: inline-block;
 }
 #gradient {
