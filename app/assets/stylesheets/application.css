@@ -17,12 +17,15 @@
 .button-row { width: 800px;}
 .button_to {
 	width: 100px;
+    background-color: black;
+    display: inline-block;
 }
 img {
 	max-height: 85vh;
 }
 input[type="submit" i] {
 	width: 100px;
+    background-color: black;
 	display: inline-block;
 }
 form {
