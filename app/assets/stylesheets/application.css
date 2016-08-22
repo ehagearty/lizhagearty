@@ -17,7 +17,8 @@
 .button-row { width: 800px;}
 .button_to {
 	width: 100px;
-    background-color: black;
+    background-color: transparent;
+    border: none;
     display: inline-block;
 }
 img {
@@ -25,7 +26,8 @@ img {
 }
 input[type="submit" i] {
 	width: 100px;
-    background-color: black;
+    border: none;
+    background-color: transparent;
 	display: inline-block;
 }
 form {
