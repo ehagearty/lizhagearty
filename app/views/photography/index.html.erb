@@ -20,6 +20,9 @@
 	</div>
 	<div class="container-outer">
 		<div class="container-inner">
+		<% @flickr_images.each do |image| %>
+		   <%= image_tag image %>
+		<% end %>
 		<% @images.each do |image| %>
 		   <%= image_tag @folder ? "#{@folder}/#{image.split('/').last}" : "#{image.split('/').last}" %>
 		 <% end %>

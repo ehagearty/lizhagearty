@@ -15,7 +15,7 @@
     .container-outer { overflow: scroll; height: 85vh;}
     .container-inner { width: 1000000px; }
     img {
-        max-height: 85vh;
+        height: 85vh;
     }
 }
 @media only screen and (max-device-width: 480px) {
