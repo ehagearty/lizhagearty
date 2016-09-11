@@ -10,7 +10,9 @@ class PhotographyController < ApplicationController
   		@flickr_images = ['https://c1.staticflickr.com/9/8118/10202712756_2e342d0e63_h.jpg']
   	elsif @folder == "greek"
   		@flickr_images = ['https://c1.staticflickr.com/9/8111/28595658154_d2ef2c8b58_h.jpg', 'https://c1.staticflickr.com/9/8259/28595660044_a7cd5c3dd5_h.jpg', 'https://c1.staticflickr.com/9/8347/28595662024_a6637bbaa7_h.jpg', 'https://c1.staticflickr.com/9/8355/28595663524_2285e8702e_h.jpg', 'https://c1.staticflickr.com/9/8144/29139955041_c0ab3fd2fd_h.jpg']
-  	end
+  	elsif @folder == "grad"
+      @flickr_images = ['https://c2.staticflickr.com/8/7505/29577488176_2c433e4de2_k.jpg', 'https://c1.staticflickr.com/9/8544/29612064875_35d13cdde0_h.jpg']
+    end
   	@images = Dir.glob("app/assets/images/#{@folder}/*.jpg")
   end
 end
