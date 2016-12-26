@@ -22,33 +22,42 @@ window.mobilecheck = function() {
   return check;
 };
 
+$(window).resize(function() {
+    if(this.resizeTO) clearTimeout(this.resizeTO);
+    this.resizeTO = setTimeout(function() {
+        $(this).trigger('resizeEnd');
+    }, 500);
+});
+
+$(window).bind('resizeEnd', function() {
+  $('img').each( function() {
+    var h = $('.content-block').width() / 1.5;
+    console.log(h)
+    $(this).css('height', h);
+  });
+
+  $('.content-gallery').css('height', $('.content-block').width() / 1.5);
+});
 
 SINGLE_IMAGE_WIDTH = 300
 total_width = 0
 
 $(document).ready(function() {
+
   console.log("HI JavaScript IS WORKING ")
 
-  // $('img').on('click', function () {
-  //   var max = $(".container img").length
-  //   console.log("CLICKED");
-  //   if (current_photo < max) {
-  //     current_photo = current_photo + 1;
-  //   } else {
-  //     current_photo = 0
-  //   }
-  //   var divID = current_photo;
-  //   // $(this).addClass('Active').siblings().removeClass('Active');
-  //   $('#' + divID).parent().siblings().children().addClass('Hidden');
-  //   $('#' + divID).parent().siblings().children().removeClass('Active');
-  //   $('#' + divID).addClass('Active');
-  //   $('#' + divID).removeClass('Hidden');
-  // })
+  $('img').each( function() {
+    var h = $('.content-block').width() / 1.5;
+    console.log(h)
+    $(this).css('height', h);
+  });
+
+  $('.content-gallery').css('height', $('.content-block').width() / 1.5);
 
   $('#next, img').on('click', function (evt) {
     evt.stopImmediatePropagation();
     var max = $(".container img").length
-    console.log(current_photo);
+    var last_photo = current_photo
     if (current_photo < max - 1) {
       current_photo = current_photo + 1;
     } else {
@@ -56,10 +65,8 @@ $(document).ready(function() {
     }
     var divID = current_photo;
     // $(this).addClass('Active').siblings().removeClass('Active');
-    $('#' + divID).parent().siblings().children().addClass('Hidden');
-    $('#' + divID).parent().siblings().children().removeClass('Active');
-    $('#' + divID).addClass('Active');
-    $('#' + divID).removeClass('Hidden');
+    $('#' + last_photo).addClass('Hidden-fade').removeClass('Active');
+    $('#' + divID).addClass('Active').removeClass('Hidden').removeClass('Hidden-fade');
   })
   $('#back').on('click', function (evt) {
     evt.stopImmediatePropagation();

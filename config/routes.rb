@@ -8,7 +8,7 @@ Lizhagearty::Application.routes.draw do
   get 'grad' => 'photography#index', as: :grad, folder: "grad"
   get 'me' => 'photography#index', as: :me, folder: "self-portraits"
   get 'travel' =>'photography#index', as: :index, folder: "travel"
-  get 'events' =>'photography#index', as: :index, folder: "events"
+  get 'festivals' =>'photography#index', as: :index, folder: "festivals"
   get 'greek'  =>'photography#index', as: :index, folder: "greek"
 
   # Sample of regular route:

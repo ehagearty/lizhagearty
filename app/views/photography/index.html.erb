@@ -9,33 +9,48 @@
 	<title>Fun</title>
 </head>
 <body>
+	<h1 class="title"><a href="/">LIZ HAGEARTY</a></h1>
 	<div class="button-row">
-		<h1>Liz Hagearty</h1>
-		<%= button_to "home", { :action => "index", folder: "main" }, :method => :get %>
 		<%= button_to "grad", { :action => "index", folder: "grad" }, :method => :get %>
 		<%= button_to "greek", { :action => "index", folder: "greek" }, :method => :get %>
 		<%= button_to "self portraits", { :action => "index", folder: "self-portraits" }, :method => :get %>
 		<%= button_to "travel", { :action => "index", folder: "travel" }, :method => :get %>
-		<%= button_to "events", { :action => "index", folder: "events" }, :method => :get %>
+		<%= button_to "festivals", { :action => "index", folder: "festivals" }, :method => :get %>
 	</div>
 	<div class="container">
-		<button id="back"> < </button>
-		<button id="next"> > </button>
-		<% @images.each_with_index do |image, i| %>
-			<div class="photo-container">
-				<% if i == 0 %>
-			    <%= image_tag "#{@folder}/#{image.split('/').last}", :class => "Active", :id => "#{i}" %>
-			  <% else %>
-			  	<%= image_tag "#{@folder}/#{image.split('/').last}", :class => "Hidden", :id => "#{i}" %>
-			  <% end %>
-		 	</div>
-		 <% end %>
-		<% @flickr_images.each_with_index do |image, i| %>
-			<% i += @images.length %>
-			<div class="photo-container">
-		   <%= image_tag image, :class => "Hidden", :id => "#{i}" %>
-		  </div>
-		<% end %>
+		<div class="content-row">
+			<div class="content-block">
+				<div class="content-gallery-block">
+<!-- 				  <div class="sqs-gallery-meta-container">
+			      <div class="sqs-gallery-controls show-hover-effect">
+			        <a href="#" class="previous"></a>
+			        <a href="#" class="next"></a>
+			      </div>
+			    </div> -->
+			    <div class="sqs-gallery-controls show-hover-effect">
+						<button id="back" class="previous"> < </button>
+						<button id="next" class="next"> > </button>
+					</div>
+					<div class="content-gallery">
+						<% @images.each_with_index do |image, i| %>
+							<div class="photo-container">
+								<% if i == 0 %>
+							    <%= image_tag "#{@folder}/#{image.split('/').last}", :class => "Active", :id => "#{i}" %>
+							  <% else %>
+							  	<%= image_tag "#{@folder}/#{image.split('/').last}", :class => "Hidden", :id => "#{i}" %>
+							  <% end %>
+						 	</div>
+						 <% end %>
+						<% @flickr_images.each_with_index do |image, i| %>
+							<% i += @images.length %>
+							<div class="photo-container">
+						   <%= image_tag image, :class => "Hidden", :id => "#{i}" %>
+						  </div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 </body>
