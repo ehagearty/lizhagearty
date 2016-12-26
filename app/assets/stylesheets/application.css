@@ -11,6 +11,45 @@
  *= require_self
  *= require_tree .
  */
+
+#divWrap{height:40px;width:100%;}
+
+#divWrap div{
+    opacity:0;
+}
+.Active{
+    opacity:1;
+    -webkit-animation:fadeIn ease-in-out 0.5s;
+    animation:fadeIn ease-in-out 0.5s;
+}
+.Hidden{
+    opacity:0;
+}
+
+@-webkit-keyframes fadeIn{
+    from{opacity:0;}
+    to  {opacity:1;}
+}
+@keyframes fadeIn{
+    from{opacity:0;}
+    to  {opacity:1;}
+}
+
+.photo-container {
+    height: 85vh;
+    position: absolute;
+    width: 100%;
+}
+
+.photo-container img {
+    display:block;
+    margin:auto;
+}
+
+/*.image-class {
+    opacity: 0;
+}*/
+
 @media only screen and (min-device-width: 480px) {
     .container-outer { overflow: scroll; height: 85vh;}
     .container-inner { width: 1000000px; }

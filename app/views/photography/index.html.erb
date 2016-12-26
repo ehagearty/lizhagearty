@@ -18,16 +18,25 @@
 		<%= button_to "travel", { :action => "index", folder: "travel" }, :method => :get %>
 		<%= button_to "events", { :action => "index", folder: "events" }, :method => :get %>
 	</div>
-	<div class="container-outer">
-		<div class="container-inner">
-		<% @flickr_images.each do |image| %>
-		   <%= image_tag image %>
-		<% end %>
-		<% @images.each do |image| %>
-		   <%= image_tag @folder ? "#{@folder}/#{image.split('/').last}" : "#{image.split('/').last}" %>
+	<div class="container">
+		<button id="back"> < </button>
+		<button id="next"> > </button>
+		<% @images.each_with_index do |image, i| %>
+			<div class="photo-container">
+				<% if i == 0 %>
+			    <%= image_tag "#{@folder}/#{image.split('/').last}", :class => "Active", :id => "#{i}" %>
+			  <% else %>
+			  	<%= image_tag "#{@folder}/#{image.split('/').last}", :class => "Hidden", :id => "#{i}" %>
+			  <% end %>
+		 	</div>
 		 <% end %>
-		</div>
+		<% @flickr_images.each_with_index do |image, i| %>
+			<% i += @images.length %>
+			<div class="photo-container">
+		   <%= image_tag image, :class => "Hidden", :id => "#{i}" %>
+		  </div>
+		<% end %>
 	</div>
-	
+</div>
 </body>
 </html>
