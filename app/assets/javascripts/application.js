@@ -46,6 +46,8 @@ $(document).ready(function() {
 
   console.log("HI JavaScript IS WORKING ")
 
+  $('.content-overlay').delay(200).fadeOut(2000);
+
   $('img').each( function() {
     var h = $('.content-block').width() / 1.5;
     console.log(h)

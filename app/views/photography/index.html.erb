@@ -11,27 +11,23 @@
 <body>
 	<h1 class="title"><a href="/">LIZ HAGEARTY</a></h1>
 	<div class="button-row">
-		<%= button_to "grad", { :action => "index", folder: "grad" }, :method => :get %>
-		<%= button_to "greek", { :action => "index", folder: "greek" }, :method => :get %>
-		<%= button_to "self portraits", { :action => "index", folder: "self-portraits" }, :method => :get %>
-		<%= button_to "travel", { :action => "index", folder: "travel" }, :method => :get %>
-		<%= button_to "festivals", { :action => "index", folder: "festivals" }, :method => :get %>
+		<%= link_to "grad", { :action => "index", folder: "grad" }, :method => :get, :class => "menu" %>
+		<%= link_to "greek", { :action => "index", folder: "greek" }, :method => :get, :class => "menu" %>
+		<%= link_to "self portraits", { :action => "index", folder: "self-portraits" }, :method => :get, :class => "menu" %>
+		<%= link_to "travel", { :action => "index", folder: "travel" }, :method => :get, :class => "menu" %>
+		<%= link_to "festivals", { :action => "index", folder: "festivals" }, :method => :get, :class => "menu" %>
 	</div>
 	<div class="container">
 		<div class="content-row">
 			<div class="content-block">
 				<div class="content-gallery-block">
-<!-- 				  <div class="sqs-gallery-meta-container">
-			      <div class="sqs-gallery-controls show-hover-effect">
-			        <a href="#" class="previous"></a>
-			        <a href="#" class="next"></a>
-			      </div>
-			    </div> -->
-			    <div class="sqs-gallery-controls show-hover-effect">
-						<button id="back" class="previous"> < </button>
-						<button id="next" class="next"> > </button>
+			    <div class="content-gallery-controls show-hover-effect">
+						<a id="back" class="previous"> < </a>
+						<a id="next" class="next"> > </a>
 					</div>
 					<div class="content-gallery">
+						<div class="content-overlay">
+						</div>
 						<% @images.each_with_index do |image, i| %>
 							<div class="photo-container">
 								<% if i == 0 %>
