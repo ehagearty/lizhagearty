@@ -1,17 +1,17 @@
 class PhotographyController < ApplicationController
   def index
   	@folder = params[:folder]
-  	@flickr_images = [
-      'https://c2.staticflickr.com/6/5772/30292350281_26c2fe6b2c_b.jpg', # Sarah Healy
-      'https://c1.staticflickr.com/9/8245/8517681452_ab479a4d5b_b.jpg',
-      'https://c1.staticflickr.com/1/634/22512346495_6f8ac4478f_h.jpg',
-      'https://c2.staticflickr.com/8/7048/6849608987_97da98bd82_b.jpg', # Lamp orange
-      'https://c1.staticflickr.com/7/6220/6366309663_10f45b0f51_b.jpg' # Madison sunset camera
-    ]
-  	if (@folder == "self-portraits")
+  	if (@folder == "main")
+      @flickr_images = [
+        'https://c2.staticflickr.com/6/5788/23524107370_c3c2026568_h.jpg', #pink hair, day I graduated
+        'https://c2.staticflickr.com/6/5772/30292350281_26c2fe6b2c_b.jpg', # Sarah Healy
+        'https://c1.staticflickr.com/1/634/22512346495_6f8ac4478f_h.jpg', #flowers
+        'https://c1.staticflickr.com/7/6220/6366309663_10f45b0f51_b.jpg', # Madison sunset camera
+        'https://c1.staticflickr.com/9/8245/8517681452_ab479a4d5b_b.jpg' #eleanor sunset
+      ]
+  	elsif (@folder == "self-portraits")
   		@flickr_images = [
         'https://c1.staticflickr.com/1/712/22014785975_f63d4c3091_h.jpg', #bridge boston
-        'https://c2.staticflickr.com/6/5788/23524107370_c3c2026568_h.jpg', #pink hair, day I graduated
         'https://c1.staticflickr.com/1/630/23069876259_9a71c8e8a5_h.jpg', #berkeley apartment sweater
         'https://c1.staticflickr.com/1/634/23208495613_edc991b72e_h.jpg', #black and white 2 photos
         'https://c2.staticflickr.com/6/5721/21181381214_0e059327ef_b.jpg', # Thailand (first time)
@@ -31,12 +31,15 @@ class PhotographyController < ApplicationController
   		@flickr_images = [
         'https://c1.staticflickr.com/1/690/31601694610_4969b19cd5_b.jpg', # Alina Baraz
         'https://c1.staticflickr.com/1/349/31975270465_27e0bcec4d_b.jpg', #LIB sunset
+        'https://c1.staticflickr.com/1/266/31984216365_f5d5f0829b_b.jpg', #erin
+        'https://c1.staticflickr.com/1/668/31867116201_9a804e6c5b_b.jpg', # millie alex
         'https://c1.staticflickr.com/1/316/31975271085_07764ecc13_b.jpg', #paris sinclair
         'https://c1.staticflickr.com/1/416/31827258512_5c5b681715_b.jpg', #austin
         'https://c1.staticflickr.com/9/8118/10202712756_2e342d0e63_h.jpg',
       ]
   	elsif @folder == "greek"
   		@flickr_images = [
+        'https://c1.staticflickr.com/1/773/31144935874_9da6884bbe_b.jpg', # monica nakta
         'https://c1.staticflickr.com/9/8111/28595658154_d2ef2c8b58_h.jpg',
         'https://c1.staticflickr.com/9/8259/28595660044_a7cd5c3dd5_h.jpg',
         'https://c1.staticflickr.com/9/8347/28595662024_a6637bbaa7_h.jpg',

@@ -41,6 +41,39 @@ if (!window.mobilecheck()) {
   });
 }
 
+function nextPhoto() {
+  var max = $(".container img").length
+  var last_photo = active;
+  active = (active < max - 1) ? active + 1 : 0;
+  $('#' + last_photo).addClass('Hidden-fade').removeClass('Active');
+  $('#' + active).addClass('Active').removeClass('Hidden').removeClass('Hidden-fade');
+}
+
+function lastPhoto() {
+  var max = $(".container img").length
+  active = (active > 0) ? active - 1 : max - 1;
+  $('#' + active).parent().siblings().children().addClass('Hidden');
+  $('#' + active).parent().siblings().children().removeClass('Active');
+  $('#' + active).addClass('Active');
+  $('#' + active).removeClass('Hidden');
+}
+
+document.onkeydown = function(e) {
+    switch (e.keyCode) {
+        case 37:
+            lastPhoto();
+            break;
+        case 38:
+            alert('up');
+            break;
+        case 39:
+            nextPhoto();
+            break;
+        case 40:
+            alert('down');
+            break;
+    }
+};
 
 $(document).ready(function() {
 
@@ -56,24 +89,16 @@ $(document).ready(function() {
 
     $('#next, img').on('click', function (evt) {
       evt.stopImmediatePropagation();
-      var max = $(".container img").length
-      var last_photo = active;
-      active = (active < max - 1) ? active + 1 : 0;
-      $('#' + last_photo).addClass('Hidden-fade').removeClass('Active');
-      $('#' + active).addClass('Active').removeClass('Hidden').removeClass('Hidden-fade');
+      nextPhoto();
     });
 
     $('#back').on('click', function (evt) {
       evt.stopImmediatePropagation();
-      var max = $(".container img").length
-      active = (active > 0) ? active - 1 : max - 1;
-      $('#' + active).parent().siblings().children().addClass('Hidden');
-      $('#' + active).parent().siblings().children().removeClass('Active');
-      $('#' + active).addClass('Active');
-      $('#' + active).removeClass('Hidden');
+      lastPhoto()
     });
+
   } else {
-    console.log("MOBILLLEEE")
+    console.log("Mobile")
   }
 });
 
