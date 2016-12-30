@@ -1,53 +1,65 @@
-<!-- <h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
--->
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Fun</title>
-</head>
-<body>
-	<h1 class="title"><a href="/">LIZ HAGEARTY</a></h1>
-	<div class="button-row">
-		<%= link_to "grad", { :action => "index", folder: "grad" }, :method => :get, :class => "menu" %>
-		<%= link_to "greek", { :action => "index", folder: "greek" }, :method => :get, :class => "menu" %>
-		<%= link_to "self portraits", { :action => "index", folder: "self-portraits" }, :method => :get, :class => "menu" %>
-		<%= link_to "travel", { :action => "index", folder: "travel" }, :method => :get, :class => "menu" %>
-		<%= link_to "festivals", { :action => "index", folder: "festivals" }, :method => :get, :class => "menu" %>
-	</div>
-	<div class="container">
-		<div class="content-row">
-			<div class="content-block">
-				<div class="content-gallery-block">
-			    <div class="content-gallery-controls show-hover-effect">
-						<a id="back" class="previous"> < </a>
-						<a id="next" class="next"> > </a>
-					</div>
-					<div class="content-gallery">
-						<div class="content-overlay">
+	<head>
+		<title>Fun</title>
+	</head>
+	<body>
+		<h1 class="title"><a href="/">LIZ HAGEARTY</a></h1>
+		<div class="button-row">
+			<%= link_to "grad", { :action => "index", folder: "grad" }, :method => :get, :class => "menu" %>
+			<%= link_to "greek", { :action => "index", folder: "greek" }, :method => :get, :class => "menu" %>
+			<%= link_to "self portraits", { :action => "index", folder: "self-portraits" }, :method => :get, :class => "menu" %>
+			<%= link_to "travel", { :action => "index", folder: "travel" }, :method => :get, :class => "menu" %>
+			<%= link_to "festivals", { :action => "index", folder: "festivals" }, :method => :get, :class => "menu" %>
+			<%= link_to "surrealism", { :action => "index", folder: "surrealism" }, :method => :get, :class => "menu" %>
+		</div>
+		<% if browser.device.mobile? %>
+			<div class="container">
+				<% @flickr_images.each_with_index do |image, i| %>
+					<div class="mobile-container">
+				   <%= image_tag image, :class => "mobile-content"%>
+				  </div>
+				<% end %>
+				<% @images.each_with_index do |image, i| %>
+					<div class="mobile-container">
+						<%= image_tag "#{@folder}/#{image.split('/').last}", :class => "mobile-content"%>
+				 	</div>
+				 <% end %>
+			</div>
+		<% else %>
+			<div class="container">
+				<div class="content-row">
+					<div class="content-block">
+						<div class="content-gallery-block">
+					    <div class="content-gallery-controls show-hover-effect">
+								<a id="back" class="previous"> < </a>
+								<a id="next" class="next"> > </a>
+							</div>
+							<div class="content-gallery">
+								<div class="content-overlay">
+								</div>
+								<% @flickr_images.each_with_index do |image, i| %>
+									<div class="photo-container">
+										<% if i == 0 %>
+									    <%= image_tag image, :class => "Active", :id => "#{i}" %>
+									  <% else %>
+								    	<%= image_tag image, :class => "Hidden", :id => "#{i}" %>
+								    <% end %>
+								  </div>
+								<% end %>
+								<% @images.each_with_index do |image, i| %>
+									<% i += @flickr_images.length %>
+									<div class="photo-container">
+									  <%= image_tag "#{@folder}/#{image.split('/').last}", :class => "Hidden", :id => "#{i}" %>
+								 	</div>
+								<% end %>
+							</div>
 						</div>
-						<% @images.each_with_index do |image, i| %>
-							<div class="photo-container">
-								<% if i == 0 %>
-							    <%= image_tag "#{@folder}/#{image.split('/').last}", :class => "Active", :id => "#{i}" %>
-							  <% else %>
-							  	<%= image_tag "#{@folder}/#{image.split('/').last}", :class => "Hidden", :id => "#{i}" %>
-							  <% end %>
-						 	</div>
-						 <% end %>
-						<% @flickr_images.each_with_index do |image, i| %>
-							<% i += @images.length %>
-							<div class="photo-container">
-						   <%= image_tag image, :class => "Hidden", :id => "#{i}" %>
-						  </div>
-						<% end %>
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-</div>
-</body>
+		<% end %>
+	</body>
 </html>

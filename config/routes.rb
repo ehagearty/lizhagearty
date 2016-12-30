@@ -10,6 +10,8 @@ Lizhagearty::Application.routes.draw do
   get 'travel' =>'photography#index', as: :index, folder: "travel"
   get 'festivals' =>'photography#index', as: :index, folder: "festivals"
   get 'greek'  =>'photography#index', as: :index, folder: "greek"
+  get 'surrealism'  =>'photography#index', as: :index, folder: "surrealism"
+  get 'test'  =>'photography#index', as: :index, folder: "test"
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

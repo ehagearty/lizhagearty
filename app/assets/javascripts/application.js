@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require_tree .
 
-var current_photo = 0
+var active = 0
 
 window.mobilecheck = function() {
   var check = false;
@@ -22,86 +22,58 @@ window.mobilecheck = function() {
   return check;
 };
 
-$(window).resize(function() {
-    if(this.resizeTO) clearTimeout(this.resizeTO);
-    this.resizeTO = setTimeout(function() {
-        $(this).trigger('resizeEnd');
-    }, 500);
-});
-
-$(window).bind('resizeEnd', function() {
-  $('img').each( function() {
-    var h = $('.content-block').width() / 1.5;
-    console.log(h)
-    $(this).css('height', h);
+if (!window.mobilecheck()) {
+  $(window).resize(function() {
+      if(this.resizeTO) clearTimeout(this.resizeTO);
+      this.resizeTO = setTimeout(function() {
+          $(this).trigger('resizeEnd');
+      }, 500);
   });
 
-  $('.content-gallery').css('height', $('.content-block').width() / 1.5);
-});
+  $(window).bind('resizeEnd', function() {
+    $('img').each( function() {
+      var h = $('.content-block').width() / 1.5;
+      console.log(h)
+      $(this).css('height', h);
+    });
 
-SINGLE_IMAGE_WIDTH = 300
-total_width = 0
+    $('.content-gallery').css('height', $('.content-block').width() / 1.5);
+  });
+}
+
 
 $(document).ready(function() {
 
-  console.log("HI JavaScript IS WORKING ")
+  if (!window.mobilecheck()) {
+    $('.content-overlay').delay(200).fadeOut(2000);
 
-  $('.content-overlay').delay(200).fadeOut(2000);
+    $('img').each( function() {
+      var h = $('.content-block').width() / 1.5;
+      $(this).css('height', h);
+    });
 
-  $('img').each( function() {
-    var h = $('.content-block').width() / 1.5;
-    console.log(h)
-    $(this).css('height', h);
-  });
+    $('.content-gallery').css('height', $('.content-block').width() / 1.5);
 
-  $('.content-gallery').css('height', $('.content-block').width() / 1.5);
+    $('#next, img').on('click', function (evt) {
+      evt.stopImmediatePropagation();
+      var max = $(".container img").length
+      var last_photo = active;
+      active = (active < max - 1) ? active + 1 : 0;
+      $('#' + last_photo).addClass('Hidden-fade').removeClass('Active');
+      $('#' + active).addClass('Active').removeClass('Hidden').removeClass('Hidden-fade');
+    });
 
-  $('#next, img').on('click', function (evt) {
-    evt.stopImmediatePropagation();
-    var max = $(".container img").length
-    var last_photo = current_photo
-    if (current_photo < max - 1) {
-      current_photo = current_photo + 1;
-    } else {
-      current_photo = 0
-    }
-    var divID = current_photo;
-    // $(this).addClass('Active').siblings().removeClass('Active');
-    $('#' + last_photo).addClass('Hidden-fade').removeClass('Active');
-    $('#' + divID).addClass('Active').removeClass('Hidden').removeClass('Hidden-fade');
-  })
-  $('#back').on('click', function (evt) {
-    evt.stopImmediatePropagation();
-    var max = $(".container img").length
-    console.log(current_photo);
-    if (current_photo > 0) {
-      current_photo = current_photo - 1;
-    } else {
-      current_photo = max - 1;
-    }
-    var divID = current_photo;
-    // $(this).addClass('Active').siblings().removeClass('Active');
-    $('#' + divID).parent().siblings().children().addClass('Hidden');
-    $('#' + divID).parent().siblings().children().removeClass('Active');
-    $('#' + divID).addClass('Active');
-    $('#' + divID).removeClass('Hidden');
-  })
-  // $('img').on('click', function () {
-  //   console.log("CLICKED");
-  //   var divID = current_photo;
-  //   current_photo = current_photo + 1;
-  //   $(this).addClass('Active').siblings().removeClass('Active');
-  //   $('#' + divID).addClass('Active').siblings().removeClass('Active');
-  // })
-
-  // if (!window.mobilecheck) {
-  //   $("img").load(function() {
-  //         total_width += (($(this).width() / 2.0) + 10);
-  //         console.log($(this).width())
-  //         $(".container-inner").css("width", (total_width + $(".container-inner img").length));
-  //     });
-  // }
-    // var container_width = SINGLE_IMAGE_WIDTH * $(".container-inner img").length;
-    // $(".container-inner").css("width", container_width);
+    $('#back').on('click', function (evt) {
+      evt.stopImmediatePropagation();
+      var max = $(".container img").length
+      active = (active > 0) ? active - 1 : max - 1;
+      $('#' + active).parent().siblings().children().addClass('Hidden');
+      $('#' + active).parent().siblings().children().removeClass('Active');
+      $('#' + active).addClass('Active');
+      $('#' + active).removeClass('Hidden');
+    });
+  } else {
+    console.log("MOBILLLEEE")
+  }
 });
 

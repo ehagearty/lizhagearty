@@ -71,6 +71,15 @@ html, body {
     display:block;
 }
 
+.mobile-container {
+    margin: 30px
+}
+.mobile-content {
+    width:100%;
+    height:80%;
+    display:block;
+}
+
 .photo-container {
     position: absolute;
     width: 100%;
@@ -110,6 +119,8 @@ a {
     width:30%;
     text-align: center;
     margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
     display:block;
 }
 .button-row {
@@ -155,7 +166,6 @@ h1 form {
     padding-bottom: 17px;
     margin-left: 11%;
     margin-right: 11%;
-    /*margin: 0px 80px;*/
     overflow: hidden;
     outline: none;
     box-shadow: inset 0 0 0 1px rgba(128,128,128,0);
